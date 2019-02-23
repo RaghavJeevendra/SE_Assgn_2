@@ -1,5 +1,9 @@
 
 package cse360assign2;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*============================================================================
 Name        : Calculator.java
 Author      : Raghav Jeevendra
@@ -35,8 +39,11 @@ public class Calculator {
 	 */
 	private int total;
 	
+	private List<String> operationseq;
+	
 	public Calculator () {
-		total = 0;  // not needed - included for clarity
+		total = 0; 
+		operationseq = new ArrayList<>();
 	}
 	/**
 	 * 
@@ -54,6 +61,7 @@ public class Calculator {
 	 */
 	public void add (int value) {
 		total = total + value;
+		operationseq.add(" + " + value);
 	}
 	
 	/**
@@ -64,6 +72,7 @@ public class Calculator {
 	 */
 	public void subtract (int value) {
 		total = total - value;
+		operationseq.add(" - " + value);
 	}
 	
 	/**
@@ -74,6 +83,7 @@ public class Calculator {
 	 */
 	public void multiply (int value) {
 		total = total * value;
+		operationseq.add(" * " + value);
 	}
 	
 	/**
@@ -89,6 +99,7 @@ public class Calculator {
 		else {
 			total = total / value;
 		}
+		operationseq.add(" / " + value);
 		
 	}
 	
@@ -98,6 +109,11 @@ public class Calculator {
 	 *
 	 */
 	public String getHistory () {
-		return "";
+		String temp = "" ;
+		temp = temp + "0";
+		for(int iterator = 0 ; iterator < operationseq.size() ; iterator++) {
+			temp = temp + operationseq.get(iterator);
+		}
+		return temp;
 	}
 }
